@@ -9,7 +9,7 @@ class Tutorial extends Component{
             <div className="Tutorial container">
                 <Navbar.Collapse>
                     <NavItem componentClass={Link} to="/helloworld" href="/helloworld" >Hello World</NavItem>
-                    <NavItem componentClass={Link} to="/for" href="/for" >perulangan</NavItem>
+                    <NavItem componentClass={Link} to="/crud" href="/crud" >CRUD Sederhana</NavItem>
                 </Navbar.Collapse>
             </div>
         );

@@ -17,8 +17,7 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem componentClass={Link} to="/signup" href="/signup">Sign up</NavItem>
-              <NavItem componentClass={Link} to="/login" href="/login">Login</NavItem>
+              <NavItem componentClass={Link} to="/login" href="/login">Login & Signup</NavItem>
               <NavItem componentClass={Link} to="/tutorial" href="/tutorial">Tutorial</NavItem>
             </Nav>
           </Navbar.Collapse>
