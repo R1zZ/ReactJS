@@ -7,6 +7,7 @@ import Helloworld from './containers/Helloworld';
 import Crud from './containers/Crud';
 import Api from './config/Api';
 import PostApi from './config/PostApi'
+import DeleteApi from './config/DeleteApi';
 
 import NotFound from './containers/NotFound';
 
@@ -19,5 +20,6 @@ export default() =>
         <Route path="/Helloworld" exact component={Helloworld} />
         <Route path="/Api" exact component={Api} />
         <Route path="/PostApi" exact component={PostApi} />
+        <Route path="/DeleteApi" exact component={DeleteApi} />
         <Route component={NotFound} />
     </Switch>;

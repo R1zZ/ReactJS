@@ -12,7 +12,7 @@ class Tutorial extends Component {
                     <NavItem componentClass={Link} to="/crud" href="/crud" >CRUD Sederhana</NavItem>
                     <NavItem componentClass={Link} to="/api" href="/crud" >pemanggilan API</NavItem>
                     <NavItem componentClass={Link} to="/postapi" href="/postapi" >POST API</NavItem>
-                    <NavItem componentClass={Link} to="/tabel" href="/postapi" >Tabel</NavItem>
+                    <NavItem componentClass={Link} to="/deleteapi" href="/deleteapi" >deleteapi</NavItem>
                 </Navbar.Collapse>
             </div>
         );
