@@ -1,37 +1,34 @@
-import React, {Component} from 'react';
-import '../css/Home.css' ;
+import React, { Component } from 'react';
+import '../css/Home.css';
 
-class AddItem extends Component{
-    constructor(props){
+class AddItem extends Component {
+    constructor(props) {
         super(props)
 
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     //fungsi submit
-    onSubmit(event){
+    onSubmit(event) {
         event.preventDefault();
         this.props.onAdd(this.namaInput.value, this.hargaInput.value);
-        this.namaInput.value='';
-        this.hargaInput.value='';
+        this.namaInput.value = '';
+        this.hargaInput.value = '';
     }
 
-    componentWillUpdate(){
-        const produk= this.getProduk();
-        this.setState({produk});
-    }
 
-    render(){
-        return(
+
+    render() {
+        return (
             <form onSubmit={this.onSubmit}>
                 <h3>Tambah</h3>
-                <input 
-                    placeholder="Nama" 
-                    ref={namaInput =>this.namaInput=namaInput}
+                <input
+                    placeholder="Nama"
+                    ref={namaInput => this.namaInput = namaInput}
                 />
-                <input 
-                    placeholder="Harga" 
-                    ref={hargaInput => this.hargaInput=hargaInput}
+                <input
+                    placeholder="Harga"
+                    ref={hargaInput => this.hargaInput = hargaInput}
                 />
                 <button>Tambah</button>
                 <hr />

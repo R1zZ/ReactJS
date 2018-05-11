@@ -1,74 +1,70 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AddItem from './AddItem';
 import ProdukItem from './ProdukItem';
-import '../css/Home.css' ;
+import '../css/Home.css';
 
-//deklarasi array
-const produk = [
-    {
-        nama: 'Komputer',
-        harga: '1080000'
-    }
-];
+/*deklarasi array
+const produk = [];*/
 
-localStorage.setItem('produk', JSON.stringify(produk));
 
-class Crud extends Component{
-    constructor(props){
+class Crud extends Component {
+    constructor(props) {
         super(props);
 
         this.state = {
-            produk: JSON.parse(localStorage.getItem('produk')) //pengambilan data array
-        };    
+            produk: []
+            //JSON.parse(localStorage.getItem('produk')) //pengambilan data array
+        };
         this.onAdd = this.onAdd.bind(this); //const untuk add
         this.onDelete = this.onDelete.bind(this); //const untuk hapus
-        this.onEditSubmit=this.onEditSubmit.bind(this); //const untuk edit
+        this.onEditSubmit = this.onEditSubmit.bind(this); //const untuk edit
     }
 
-    componentWillMount(){
-        const produk= this.getProduk();
-        this.setState({produk});
+    componentDidMount(){
+        this.getProduk();
     }
-
-    //fungsi untuk ambil
-    getProduk(){
+/*  Penyimpanan pada local storage  
+    componentWillUpdate() {
+        localStorage.setItem('produk', JSON.stringify(produk));
+    }*/
+    getProduk() {
         return this.state.produk
     }
 
     //fungsi add 
-    onAdd(nama, harga){
+    onAdd(nama, harga) {
         const produk = this.getProduk();
         produk.push({
             nama,
             harga
         });
 
-        this.setState({produk});
+        this.setState({ produk });
     }
 
     //fungsi untuk menghapus
-    onDelete(nama){
+    onDelete(nama) {
         const produk = this.getProduk();
         const filterProduk = produk.filter(produk => {
             return produk.nama !== nama;
         });
-        this.setState({produk: filterProduk});
+        this.setState({ produk: filterProduk });
     }
-    
-    onEditSubmit(nama, harga, originalNama){
+
+    onEditSubmit(nama, harga, originalNama) {
         let produk = this.getProduk();
-        produk = produk.map(produk =>{
+        produk = produk.map(produk => {
             if (produk.nama === originalNama) {
                 produk.nama = nama;
                 produk.harga = harga;
             }
             return produk;
         });
-        this.setState({produk});
+        this.setState({ produk });
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="Home">
                 <h1>CRUD</h1>
                 <AddItem
@@ -76,8 +72,8 @@ class Crud extends Component{
                 />
                 {
                     this.state.produk.map(produk => {
-                        return(
-                            <ProdukItem 
+                        return (
+                            <ProdukItem
                                 key={produk.nama}
                                 nama={produk.nama}
                                 harga={produk.harga}

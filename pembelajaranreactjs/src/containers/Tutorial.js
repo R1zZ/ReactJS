@@ -10,6 +10,7 @@ class Tutorial extends Component{
                 <Navbar.Collapse>
                     <NavItem componentClass={Link} to="/helloworld" href="/helloworld" >Hello World</NavItem>
                     <NavItem componentClass={Link} to="/crud" href="/crud" >CRUD Sederhana</NavItem>
+                    <NavItem componentClass={Link} to="/api" href="/crud" >pengoprasian API</NavItem>
                 </Navbar.Collapse>
             </div>
         );
