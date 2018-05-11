@@ -15,5 +15,6 @@ export default() =>
         <Route path="/Login" exact component={Login} />
         <Route path="/Tutorial" exact component={Tutorial} />
         <Route path="/Helloworld" exact component={Helloworld} />
+        <Route path="/Crud" exact component={Crud} />
         <Route component={NotFound} />
     </Switch>;

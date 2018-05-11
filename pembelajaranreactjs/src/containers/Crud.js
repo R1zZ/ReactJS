@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
-import {button} from 'react-bootstrap';
+import AddItem from './AddItem';
 import ProdukItem from './ProdukItem';
 import '../css/Home.css' ;
 
+//deklarasi array
 const produk = [
-    {
-        nama: 'HP',
-        harga: '1000000'
-    },
     {
         nama: 'Komputer',
         harga: '1080000'
@@ -21,30 +18,62 @@ class Crud extends Component{
         super(props);
 
         this.state = {
-            produk: []
+            produk: JSON.parse(localStorage.getItem('produk')) //pengambilan data array
         };    
-
-        this.onDelete = this.onDelete.bind(this);
+        this.onAdd = this.onAdd.bind(this); //const untuk add
+        this.onDelete = this.onDelete.bind(this); //const untuk hapus
+        this.onEditSubmit=this.onEditSubmit.bind(this); //const untuk edit
     }
 
     componentWillMount(){
-        this.getProduk();
+        const produk= this.getProduk();
+        this.setState({produk});
     }
 
+    //fungsi untuk ambil
     getProduk(){
-        const produk = JSON.parse(localStorage.getItem('produk'));
-
-        this.setState({produk});        
+        return this.state.produk
     }
 
+    //fungsi add 
+    onAdd(nama, harga){
+        const produk = this.getProduk();
+        produk.push({
+            nama,
+            harga
+        });
+
+        this.setState({produk});
+    }
+
+    //fungsi untuk menghapus
     onDelete(nama){
-        console.log(nama);
+        const produk = this.getProduk();
+        const filterProduk = produk.filter(produk => {
+            return produk.nama !== nama;
+        });
+        this.setState({produk: filterProduk});
     }
     
+    onEditSubmit(nama, harga, originalNama){
+        let produk = this.getProduk();
+        produk = produk.map(produk =>{
+            if (produk.nama === originalNama) {
+                produk.nama = nama;
+                produk.harga = harga;
+            }
+            return produk;
+        });
+        this.setState({produk});
+    }
+
     render(){
         return(
             <div className="Home">
-                <h1>Kelola Produk</h1>
+                <h1>CRUD</h1>
+                <AddItem
+                    onAdd={this.onAdd}
+                />
                 {
                     this.state.produk.map(produk => {
                         return(
@@ -53,6 +82,7 @@ class Crud extends Component{
                                 nama={produk.nama}
                                 harga={produk.harga}
                                 onDelete={this.onDelete}
+                                onEditSubmit={this.onEditSubmit}
                             />
                         );
                     })
